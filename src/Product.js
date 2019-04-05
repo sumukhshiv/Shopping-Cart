@@ -1,7 +1,6 @@
 import React from "react";
 import Cart from "./Cart";
 
-let counter = 0;
 
 const Product = props => {
     return (
@@ -11,26 +10,19 @@ const Product = props => {
                 <div class="header">{props.productName}</div>
                 <div class="description"> Price: ${props.price}</div>
                 </div>
-                <div class="ui bottom attached button" onClick={() => addToCart(props.productName)}>
+                <div class="ui bottom attached button" onClick={() => {props.onAddToCart(props.productName, props.price)}}>
                 <i class="add icon"></i>
                 Add to Cart
+                </div>
+                <div class="ui bottom attached button" onClick={() => {props.onRemoveFromCart(props.productName)}}>
+                <i class="remove icon"></i>
+                Remove from Cart
                 </div>
             </div>
         </div>
     );
 
-    function addToCart(arg) {
-        if (arg == "Apple") {
-          counter++;
-          if (props.limit == 0) {
-            alert("This item is out of stock!");
-          } else if (counter > props.limit) {
-            alert("There are too many Apples in your cart!");
-          } else {
-            alert("There are " + counter +  " Apples in your cart!");
-          }
-        }
-      }
+    
 
 };
 
